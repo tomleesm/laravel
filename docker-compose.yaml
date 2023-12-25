@@ -7,7 +7,7 @@ services:
   nginx:
     image: nginx:1.21-alpine
     ports:
-      - 80:80
+      - 127.0.0.1:8080:80
     volumes:
       - ./src/backend:/var/www/backend
       - ./.docker/nginx/conf.d:/etc/nginx/conf.d
@@ -41,7 +41,7 @@ services:
       - mysqldata:/var/lib/mysql
     # 開放本機端的 port 3306 來查詢 MySQL
     ports:
-      - 127.0.0.1:3306:3306
+      - 127.0.0.1:3307:3306
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD
       interval: 5s
